@@ -34,24 +34,11 @@ const jsFiles = [
 function styles()
 {
 	return gulp.src('./src/css/style.less')
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 	/* return gulp.src(cssFiles) // for use without less */
 				.pipe(gulpif(isDev, sourcemaps.init()))
 				.pipe(less())
 				/*	.pipe(concat('style.css')) // for use without less */				
-=======
-	/*	return gulp.src(cssFiles)	//for use without less */
-				.pipe(gulpif(isDev, sourcemaps.init()))
-				/*	.pipe(concat('style.css'))		//for use without less */
-				.pipe(less())		
->>>>>>> Stashed changes
-=======
-	/*	return gulp.src(cssFiles)	//for use without less */
-				.pipe(gulpif(isDev, sourcemaps.init()))
-				/*	.pipe(concat('style.css'))		//for use without less */
-				.pipe(less())		
->>>>>>> Stashed changes
+				.pipe(gulpif(isDev, sourcemaps.init()))	
 				.pipe(gcmq())
 				.pipe(autoprefixer({
 						browsers: ['>0.1%'],
@@ -96,20 +83,10 @@ function watch()
         },
         tunnel: false
     });
-	}
+}
 	
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 	gulp.watch('./src/css/**/*.less', styles);
 	/* gulp.watch('./src/css/**\/*.css', styles);	// for use without less  */
-=======
-	/*	gulp.watch('./src/css/**\/*.css', styles);		//for use without less */
-	gulp.watch('./src/css/**/*.less', styles);
->>>>>>> Stashed changes
-=======
-	/*	gulp.watch('./src/css/**\/*.css', styles);		//for use without less */
-	gulp.watch('./src/css/**/*.less', styles);
->>>>>>> Stashed changes
 	gulp.watch('./src/js/**/*.js', scripts);
 	gulp.watch('./src/*.html',  html);
 }
