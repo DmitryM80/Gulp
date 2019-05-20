@@ -8,21 +8,24 @@ const gulpif = require('gulp-if');
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
 const gcmq = require('gulp-group-css-media-queries');
+const less = require('gulp-less');
 
 const isDev = true;
 let isProd = !isDev;
 const isSync = process.argv.includes('--sync');
-/* const isSync = (process.argv.indexOf('--sync') !== -1); */
+/* const isSync = (process.argv.indexOf('--sync') !== -1);   */
 
 
 console.log(isDev);
 console.log(isSync);
 
+/* for use wiithout less
 const cssFiles = [
 		'./node_modules/normalize.css/normalize.css',
 		'./src/css/style.css',
 		'./src/css/more.css'
 ];
+*/
 
 const jsFiles = [
 	'./src/js/script.js'
@@ -30,9 +33,25 @@ const jsFiles = [
 
 function styles()
 {
-	return gulp.src(cssFiles)
+	return gulp.src('./src/css/style.less')
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+	/* return gulp.src(cssFiles) // for use without less */
 				.pipe(gulpif(isDev, sourcemaps.init()))
-				.pipe(concat('style.css'))				
+				.pipe(less())
+				/*	.pipe(concat('style.css')) // for use without less */				
+=======
+	/*	return gulp.src(cssFiles)	//for use without less */
+				.pipe(gulpif(isDev, sourcemaps.init()))
+				/*	.pipe(concat('style.css'))		//for use without less */
+				.pipe(less())		
+>>>>>>> Stashed changes
+=======
+	/*	return gulp.src(cssFiles)	//for use without less */
+				.pipe(gulpif(isDev, sourcemaps.init()))
+				/*	.pipe(concat('style.css'))		//for use without less */
+				.pipe(less())		
+>>>>>>> Stashed changes
 				.pipe(gcmq())
 				.pipe(autoprefixer({
 						browsers: ['>0.1%'],
@@ -52,6 +71,7 @@ function scripts()
 {
 	return gulp.src(jsFiles)
 				.pipe(concat('main.js'))
+				.on('error', console.error.bind(console))
 				.pipe(gulpif(isProd, uglify({
 					toplevel: true
 				})))
@@ -78,7 +98,18 @@ function watch()
     });
 	}
 	
-	gulp.watch('./src/css/**/*.css', styles);
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+	gulp.watch('./src/css/**/*.less', styles);
+	/* gulp.watch('./src/css/**\/*.css', styles);	// for use without less  */
+=======
+	/*	gulp.watch('./src/css/**\/*.css', styles);		//for use without less */
+	gulp.watch('./src/css/**/*.less', styles);
+>>>>>>> Stashed changes
+=======
+	/*	gulp.watch('./src/css/**\/*.css', styles);		//for use without less */
+	gulp.watch('./src/css/**/*.less', styles);
+>>>>>>> Stashed changes
 	gulp.watch('./src/js/**/*.js', scripts);
 	gulp.watch('./src/*.html',  html);
 }
