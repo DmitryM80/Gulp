@@ -78,12 +78,12 @@ function watch()
 	if(isSync)
 	{
 	browserSync.init({
-        server: {
-            baseDir: "./build"
-        },
-        tunnel: false
-    });
-}
+        	server: {
+            		baseDir: "./build"
+        	},
+        	tunnel: false
+    		});
+	}
 	
 	gulp.watch('./src/css/**/*.less', styles);
 	/* gulp.watch('./src/css/**\/*.css', styles);	// for use without less  */
